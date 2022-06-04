@@ -1,56 +1,25 @@
 import { useState } from "react";
+import KmToMiles from "./kmToMiles";
+import MinutesToHours from "./minutesToHours";
 
 function UnitConversion() {
-  const [minutes, setMinutes] = useState(0);
-  const [hours, setHours] = useState(0);
-  const [reversed, setReversed] = useState(false);
-  const onChangeMinutes = (e) => {
-    const minutes = e.target.value;
-    setMinutes(minutes);
-    setHours(minutes / 60);
-  }
-  const onChangeHours = (e) => {
-    const hours = e.target.value;
-    setHours(hours);
-    setMinutes(hours * 60);
-  }
-  const reset = () => {
-    setMinutes(0);
-    setHours(0);
-  }
-  const reverse = () => {
-    setReversed((reversed) => !reversed);
-  }
+  const [index, setIndex] = useState('0');
+  const onSelect = (event) => {
+    setIndex(event.target.value);
+  } 
 
   return (
     <div>
       <h1 className="hi">Super Converter</h1>
-      <div>
-        <label htmlFor="minutes">Minutes : </label>
-        <input
-          value={minutes}
-          id="minutes"
-          placeholder="Minutes"
-          type="number"
-          onChange={onChangeMinutes}
-          disabled={reversed === true}
-        />
-      </div>
-      <div>
-        <label htmlFor="hours">Hours : </label>
-        <input
-          value={hours}
-          id="hours"
-          placeholder="Hours"
-          type="number"
-          onChange={onChangeHours}
-          disabled={reversed === false}
-        />
-      </div>
-      <button onClick={reverse}>Reverse</button>
-      <button onClick={reset}>Reset</button>
+      <select value={index} onChange={onSelect}>
+        <option value="0">minutes & hours</option>
+        <option value="1">km & miles</option>
+      </select>
+      {
+        index === '0' ? <MinutesToHours /> : <KmToMiles />
+      }
     </div>
-  );
+  )
 }
 
 export default UnitConversion;
