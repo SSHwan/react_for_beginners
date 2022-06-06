@@ -6,7 +6,7 @@ function UnitConversion() {
   const [index, setIndex] = useState('0');
   const onSelect = (event) => {
     setIndex(event.target.value);
-  } 
+  }
 
   return (
     <div>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Btn from "../component/btn";
 
 function MinutesToHours() {
     const [minutes, setMinutes] = useState(0);
@@ -47,10 +48,12 @@ function MinutesToHours() {
               disabled={!reversed}
             />
           </div>
-          <button onClick={reverse}>
+          {/* <button onClick={reverse}>
             {reversed ? "Turn back" : "Reverse"}
           </button>
-          <button onClick={reset}>Reset</button>
+          <button onClick={reset}>Reset</button> */}
+          <Btn onClick={reverse} text={reversed ? "Turn back" : "Reverse"}></Btn>
+          <Btn onClick={reset} text='Reset'></Btn>
         </div>
       );
 }
