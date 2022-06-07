@@ -1,5 +1,4 @@
 function Btn({text, onClick}) {
-    console.log(text + ' is rendered!');
     return (
         <button
             onClick={onClick}
